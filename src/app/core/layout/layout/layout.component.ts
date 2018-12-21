@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ChangeDetectionStrategy, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
-import { AuthenticationService } from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../../store/authentication/services/authentication.service';
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 
 // TODO: move layouts into the framework

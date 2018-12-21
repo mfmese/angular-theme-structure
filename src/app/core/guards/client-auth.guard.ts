@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
 
 import { LoggerService } from '../services/logger.service';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../../store/authentication/services/authentication.service';
 import { appToaster } from '../../config/app-toaster.config';
 import { ToasterService } from 'angular2-toaster';
 
@@ -27,10 +27,10 @@ export class ClientAuthGuard implements CanActivate, CanActivateChild {
 
   private chekUser(route, state): boolean {
     const userType = this.authenticationService.getUserType();
-    const isLogin = this.authenticationService.isLogin();
-    if (userType === 'client' && isLogin) {
+    const isSignin = this.authenticationService.isSignin();
+    if (userType === 'client' && isSignin) {
       return true;
-    } else if (isLogin) {
+    } else if (isSignin) {
       this.toasterService.pop('error', appToaster.errorHead, 'Unauthorized: Access is denied');
       // this.router.navigate(['/client/dashboard']);
 
@@ -39,7 +39,7 @@ export class ClientAuthGuard implements CanActivate, CanActivateChild {
     } else {
 
       this.logger.log('Not authenticated, redirecting...');
-      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
+      this.router.navigate(['/auth/signin'], { queryParams: { returnUrl: state.url } });
       return false;
     }
   }

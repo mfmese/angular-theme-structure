@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AuthenticationService } from '../../../core/authentication/authentication.service';
+import { AuthenticationService } from '../../../store/authentication/services/authentication.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToasterService } from 'angular2-toaster';
@@ -9,13 +9,13 @@ import { appSettings } from '../../../config/app-settings.config';
 import { appToaster } from '../../../config/app-toaster.config';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
-  loginForm: FormGroup;
+  signInForm: FormGroup;
   isSubmit: boolean ;
   EMAIL_REGEX = "[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*";
   hide: boolean;
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || null;
     this.hide = true;
-    this.loginForm = new FormGroup({
+    this.signInForm = new FormGroup({
       'email': new FormControl('', [
         Validators.required,
         Validators.maxLength(250),
@@ -46,20 +46,20 @@ export class LoginComponent implements OnInit {
       'remember': new FormControl(),
     });
   }
-  get email() { return this.loginForm.get('email'); }
-  get password() { return this.loginForm.get('password'); }
-  get remember()   { return this.loginForm.get('remember'); }
+  get email() { return this.signInForm.get('email'); }
+  get password() { return this.signInForm.get('password'); }
+  get remember()   { return this.signInForm.get('remember'); }
 
   onSubmit(): boolean {
 
     this.isSubmit = true;
-    if (this.loginForm.invalid) {
+    if (this.signInForm.invalid) {
       return false;
     } else {
-      this.authenticationService.login(this.loginForm.value)
+      this.authenticationService.signin(this.signInForm.value)
       .subscribe((res) => {
         if (res.status === 'success') {
-          this.toasterService.pop('success', appToaster.successHead, appToaster.loginSucess);
+          this.toasterService.pop('success', appToaster.successHead, appToaster.signinSucess);
 
           if ( this.returnUrl === null &&  res.role === 'client' ) {
             this.returnUrl = '/client/dashboard';

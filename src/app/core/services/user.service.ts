@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FortgotPassword } from 'src/app/shared/models/forgot-password.model';
-import { ResetPassword } from 'src/app/shared/models/reset.model';
+import { ResetPassword } from 'src/app/shared/models/reset-password.model';
 import { Attachments } from 'src/app/shared/models/attachments.model';
 import { User } from 'src/app/shared/models/user.model';
 

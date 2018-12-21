@@ -1,8 +1,8 @@
 <nb-layout>
-  <nb-layout-header fixed *ngIf="authenticationService.isLogin()">
+  <nb-layout-header fixed *ngIf="authenticationService.isSignin()">
     <app-header></app-header>
   </nb-layout-header>
-  <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive *ngIf="authenticationService.isLogin()">
+  <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive *ngIf="authenticationService.isSignin()">
     <nb-sidebar-header *ngIf="currentTheme !== 'corporate'">
       <a href="javascript:;" class="btn btn-hero-success main-btn">
         <i class="ion ion-person"></i> <span>Client Menu</span>
@@ -15,7 +15,7 @@
     <ng-content select="router-outlet"></ng-content>
   </nb-layout-column>
 
-  <nb-layout-footer fixed *ngIf="authenticationService.isLogin()">
+  <nb-layout-footer fixed *ngIf="authenticationService.isSignin()">
     <app-footer></app-footer>
   </nb-layout-footer>
 </nb-layout>

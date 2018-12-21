@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   host: 'http://localhost:4200',
-  login: '/login',
+  signin: '/signin',
   fotgotPassword: '/forgot-password',
   resetPassword: '/reset-password',
   countires: '/static/countries.json',

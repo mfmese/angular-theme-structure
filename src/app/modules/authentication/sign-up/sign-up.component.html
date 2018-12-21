@@ -361,15 +361,15 @@
               <button type="submit" class="btn btn-primary">
                 Signup
               </button>
-              <a class="ml-1 text-right" [routerLink]="['/auth/login']">
-                Client Login
+              <a class="ml-1 text-right" [routerLink]="['/auth/signin']">
+                Client Signin
               </a>
             </form>
             <ng-template #successMessage>
               <div class="alert alert-success" role="alert">
                 {{ message }}
               </div>
-              <a class="btn btn-info" routerLink="/auth/login">Log In</a>
+              <a class="btn btn-info" routerLink="/auth/signin">Log In</a>
             </ng-template>
           </nb-card-body>
         </nb-card>

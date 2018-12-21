@@ -56,10 +56,10 @@ export class ResetPasswordComponent implements OnInit {
         .subscribe((res) => {
           if (res.status === 'success') {
             this.toasterService.pop('success', appToaster.successHead, res.message);
-            this.router.navigate(['/auth/login']);
+            this.router.navigate(['/auth/signin']);
           } else {
             this.toasterService.pop('error', appToaster.errorHead, res.message);
-            this.router.navigate(['/auth/login']);
+            this.router.navigate(['/auth/signin']);
           }
         });
 

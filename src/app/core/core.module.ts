@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthenticationService } from './authentication/authentication.service';
+import { AuthenticationService } from '../store/authentication/services/authentication.service';
 import { ResourceService } from './services/resource.service';
 
 

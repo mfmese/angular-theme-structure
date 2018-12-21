@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { catchError, map, tap, debounce } from 'rxjs/operators';
 import { of as observableOf } from 'rxjs';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
+import { Signin } from 'src/app/shared/models/signin.model';
 
-import { Login } from '../../shared/models/login.model';
 const credentialsKey = 'currentUser';
 
 @Injectable()
@@ -14,13 +14,13 @@ export class AuthenticationService {
     constructor(private http: HttpClient) {
     }
 
-    login(loginData: Login): Observable<any> {
-        const href = `${ environment.login }`;
-        return this.http.post<any>(href, loginData).pipe(
+    signin(signinData: Signin): Observable<any> {
+        const href = `${ environment.signin }`;
+        return this.http.post<any>(href, signinData).pipe(
             tap(
                 function (data) {
                     if (data.status === 'success') {
-                        const storage = loginData.remember ? localStorage : sessionStorage;
+                        const storage = signinData.remember ? localStorage : sessionStorage;
                         storage.setItem(credentialsKey, JSON.stringify(data));
                     }
                     return data;
@@ -40,7 +40,7 @@ export class AuthenticationService {
         return observableOf(savedCredentials);
     }
 
-    isLogin() {
+    isSignin() {
         if (localStorage.getItem(credentialsKey) || sessionStorage.getItem(credentialsKey)) {
             return true;
         }
@@ -60,7 +60,7 @@ export class AuthenticationService {
 
     getUserType() {
         const savedCredentials =  this.getUser();
-        if ( this.isLogin() ) {
+        if ( this.isSignin() ) {
             return savedCredentials['role'];
         } else {
             return false;

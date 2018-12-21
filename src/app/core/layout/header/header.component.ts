@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { ToasterService } from 'angular2-toaster';
 
-import { AuthenticationService } from '../../authentication/authentication.service';
+import { AuthenticationService } from '../../../store/authentication/services/authentication.service';
 import { AnalyticsService } from '../../services/analytics.service';
 
 import { appSettings } from '../../../config/app-settings.config';
@@ -68,9 +68,9 @@ export class HeaderComponent implements OnInit {
     console.log(userType);
     this.authenticationService.logout().subscribe((res) => {
       // if (userType === 'client') {
-      //   logOutURL = '/client/login';
+      //   logOutURL = '/client/signin';
       // }
-      logOutURL = '/auth/login';
+      logOutURL = '/auth/signin';
       this.toasterService.pop('success', appToaster.successHead, appToaster.logoutSucess);
       //Raja Developer Imp Note: 
       // for aviod  ExpressionChangedAfterItHasBeenCheckedError page reloading.

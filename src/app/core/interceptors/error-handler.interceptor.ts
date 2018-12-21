@@ -35,7 +35,7 @@ constructor(
     const httpErrorCode = response['status'];
     switch (httpErrorCode) {
       case HttpStatusCode.UNAUTHORIZED:
-          this.router.navigateByUrl('/auth/login');
+          this.router.navigateByUrl('/auth/signin');
           break;
       case HttpStatusCode.FORBIDDEN:
           this.router.navigateByUrl('/auth/403');

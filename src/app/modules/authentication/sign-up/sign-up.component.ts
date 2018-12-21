@@ -19,9 +19,9 @@ import { ResourceService } from 'src/app/core/services/resource.service';
 const URL  = `${environment.host}${environment.fileupload}`;
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'sig-nup',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
@@ -112,7 +112,7 @@ export class SignupComponent implements OnInit {
         .subscribe((res) => {
           if (res.status === 'success') {
            // this.toasterService.pop('success', appToaster.successHead, res.message);
-            // this.router.navigate(['/auth/login']);
+            // this.router.navigate(['/auth/signin']);
             this.isSuccess = true;
             this.message = res.message;
           } else {

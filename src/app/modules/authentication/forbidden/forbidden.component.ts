@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../../core/authentication/authentication.service';
+import { AuthenticationService } from '../../../store/authentication/services/authentication.service';
 import { Router } from '@angular/router';
 import { appSettings } from 'src/app/config/app-settings.config';
 
@@ -23,7 +23,7 @@ export class ForbiddenComponent implements OnInit {
   goToHome() {
     const userType = this.authenticationService.getUserType();
     if ( !userType ) {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth/signin']);
     } else if (userType === 'client') {
       this.router.navigate(['/client/dashboard']);
     }

@@ -13,10 +13,10 @@
             </div>
           </nb-card-header>
           <nb-card-header class="text-center">
-            <h4 class="title">{{ appSettings.appTitle }} Login</h4>
+            <h4 class="title">{{ appSettings.appTitle }} Signin</h4>
           </nb-card-header>
           <nb-card-body>
-            <form [ngClass]="{ 'form-submit': isSubmit}" (ngSubmit)="onSubmit()" name="loginForm" [formGroup]="loginForm">
+            <form [ngClass]="{ 'form-submit': isSubmit}" (ngSubmit)="onSubmit()" name="signInForm" [formGroup]="signInForm">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input name="email" type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
@@ -44,7 +44,8 @@
                   </span>
                 </label>
                 <div class="input-group">
-                  <input name="password" [type]="hide ? 'password' : 'text'" class="form-control" id="password" placeholder="Password" formControlName="password">
+                  <input name="password" [type]="hide ? 'password' : 'text'" class="form-control" id="password"
+                    placeholder="Password" formControlName="password">
                   <span class="input-group-append">
                     <button type="button" class="btn btn-primary input-group-text" (click)="hide = !hide">
                       <i *ngIf="hide" class="fa fa-eye"></i>
@@ -73,7 +74,7 @@
                   Log in now
                 </button>
               </div>
-              <a class="ml-1 text-right" [routerLink]="['/client/signup']">
+              <a class="ml-1 text-right" [routerLink]="['/auth/signup']">
                 Client Sign Up
               </a>
             </form>

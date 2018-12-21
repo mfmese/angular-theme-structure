@@ -6,7 +6,7 @@ import { PreloadModulesStrategy } from './core/strategies/preload-modules.strate
 const app_routes: Routes = [
   { path: 'auth', loadChildren: './modules/authentication/authentication.module#AuthenticationModule' },
   { path: 'client', loadChildren: './modules/client/client.module#ClientModule' },
-  { path: '', pathMatch: 'full', redirectTo: '/auth/login' },
+  { path: '', pathMatch: 'full', redirectTo: '/auth/signin' },
   { path: '**', redirectTo: '/auth/404' },
 ];
 

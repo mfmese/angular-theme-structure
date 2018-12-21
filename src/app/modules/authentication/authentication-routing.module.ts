@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { SignupComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
 {
-  path: 'login',
-  component: LoginComponent,
+  path: 'signin',
+  component: SignInComponent,
   data: { title: 'Log In' }
+},
+{
+  path: 'signup',
+  component: SignupComponent,
+  data: { title: 'Register' }
 },
 {
   path: 'forgot-password',
@@ -42,7 +48,8 @@ const routes: Routes = [
 })
 export class AuthRoutingModule {
   static components = [
-    LoginComponent,
+    SignInComponent,
+    SignupComponent,
     ForgotPasswordComponent,
     NotFoundComponent,
     ResetPasswordComponent,

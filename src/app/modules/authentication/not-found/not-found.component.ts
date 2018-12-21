@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../../../core/authentication/authentication.service';
+import { AuthenticationService } from '../../../store/authentication/services/authentication.service';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
 import { appSettings } from '../../../config/app-settings.config';
 
@@ -19,7 +19,7 @@ export class NotFoundComponent {
   goToHome() {
     const userType = this.authenticationService.getUserType();
     if ( !userType ) {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth/signin']);
     } else if (userType === 'client') {
       this.router.navigate(['/client/dashboard']);
     }
